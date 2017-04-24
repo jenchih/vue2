@@ -3,8 +3,8 @@
 ## 安装步骤 ##
 
 	git clone git@git.coding.net:jenchih/blog-vue.git		// 把模板下载到本地
-	cd manage-system											// 进入模板目录
-	npm install													// 安装项目依赖，等待安装完成之后
+	cd 	blog-vue									        // 进入模板目录
+	npm install												// 安装项目依赖，等待安装完成之后
 
 ## 本地开发 ##
 
@@ -42,5 +42,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
