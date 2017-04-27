@@ -1,9 +1,11 @@
 <template>
     <div class="Home">
         <v-head></v-head>
-            <transition name="move" mode="out-in">
-                <router-view></router-view>
-            </transition>
+            <div class="container">
+                <transition name="move" mode="out-in">
+                    <router-view></router-view>
+                </transition>
+            </div>
         <v-footer></v-footer>
     </div>
 </template>
@@ -17,12 +19,7 @@
         }
     }
 </script>
-<style>
-    body{
-        margin: 0 auto;
-        padding: 0;
-        background: #ececec;
-    }
+<style scoped>
     .Home{
         width: 1000px;
         margin: 0 auto;

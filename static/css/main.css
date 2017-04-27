@@ -2,10 +2,15 @@
 html,body,#app,.wrapper{
     width:100%;
     height:100%;
-    overflow: hidden;
 }
 body{
+    margin: 0 auto;
+    padding: 0;
+    background: #ececec;
     font-family:"Helvetica Neue",Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+}
+.jenchih{
+    color: #f68;
 }
 a{text-decoration: none}
 .content{
@@ -25,7 +30,7 @@ a{text-decoration: none}
 }
 .pagination{
     margin: 20px 0;
-    text-align: right;
+    text-align: center;
 }
 .plugins-tips{
     padding:20px 10px;
@@ -113,3 +118,38 @@ a{text-decoration: none}
 .editor-btn{
     margin-top: 20px;
 }
+
+/* 修改分页样式 (默认样式太J8小了 不好看) */
+#pagination {
+    text-align: center;
+    position: relative;
+ }
+#pagination li{
+    border:none;
+    display: inline-block;
+    margin:0 10px;
+    font-size: 20px;
+    min-width: 35px;
+    height: 35px;
+    line-height: 35px;
+}
+#pagination button{
+    border:none;
+    display: inline-block;
+    margin:0 10px;
+    font-size: 20px;
+    min-width: 35px;
+    height: 35px;
+    line-height: 35px;
+}
+#pagination li a{
+    padding:.5rem 1rem;
+    display:inline-block;
+    border:1px solid #ddd;
+    background:#fff;
+    color:#0E90D2;
+}
+
+/*#pagination li.active{
+    background:#f68;
+}*/

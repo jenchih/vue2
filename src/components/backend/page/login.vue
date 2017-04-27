@@ -55,7 +55,6 @@
 
 <style scoped>
     .login-wrap{
-        position: relative;
         width:100%;
         height:100%;
     }
@@ -66,7 +65,7 @@
         margin-top: -230px;
         text-align: center;
         font-size:30px;
-        color: #fff;
+        color: #000;
 
     }
     .ms-login{
