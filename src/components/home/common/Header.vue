@@ -1,5 +1,5 @@
 <template>
-	<div class="header">
+	<div class="home-header">
 		<div class="logo">
 			<img src="../../../assets/leslie.jpg">
 			<br>
@@ -23,7 +23,6 @@
 		width: 130px; 
 	}
 	.logo{
-		font-family: "Arial";
 		font-size: 48px;
 		font-weight: bold;
 		text-align: center;

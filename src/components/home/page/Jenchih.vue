@@ -3,7 +3,7 @@
 		<el-row>
 			<el-col :span="6">&nbsp;</el-col>
 			<el-col :span="12">
-				<div class="content">
+				<div class="contenta">
 					111111111111111111
 				</div>
 			</el-col>
