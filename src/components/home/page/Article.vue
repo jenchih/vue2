@@ -27,8 +27,20 @@
 	</div>
 </template>
 <script>
+// import hprose from 'hprose-html5'
 export default {
-
+	data () {
+		return {
+			loading : false
+		}
+	},
+	created () {
+		// var client = new hprose.HttpClient('192.168.130.129', ['hello', 'sum']);
+		// console.log(client)
+		// client.hello(function(){
+		// 	alert(1)
+		// })
+	}
 }
 </script>
 <style scoped>
