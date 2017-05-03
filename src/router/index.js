@@ -4,6 +4,7 @@ import Home from '@/components/home/common/Home'
 import Jenchih from '@/components/home/page/Jenchih'
 import Leslie from '@/components/home/page/Leslie'
 import Article from '@/components/home/page/Article'
+import Detail from '@/components/home/page/Detail'
 
 
 import Boss from '@/components/backend/common/Boss'
@@ -23,6 +24,10 @@ export default new Router({
 				{
 					path: '/article',
 					component: Article
+				},
+				{
+					path: '/detail/:id',
+					component: Detail
 				}
 			]
 		},
@@ -41,7 +46,7 @@ export default new Router({
 			]
 		},
 		{
-			path: '*', redirect: '/'  //所有未定义路由重定向1
+			path: '*', redirect: '/'  //所有未定义路由重定向
 		}
 	]
 })

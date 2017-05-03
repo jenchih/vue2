@@ -2,7 +2,7 @@
 	<div class="article-show">
 		<div class="article-list">
 			<div class="article">
-				<h2><div class="a-title">Hello World</div></h2>
+				<router-link to="/detail/12"><h2><div class="a-title">Hello World</div></h2></router-link>
 				<div class="a-time">2017-4-28</div>
 			</div>
 			<div class="article">
