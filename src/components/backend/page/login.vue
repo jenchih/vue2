@@ -42,7 +42,7 @@
                 self.$refs[formName].validate((valid) => {
                     if (valid) {
                         localStorage.setItem('ms_username',self.ruleForm.username);
-                        self.$router.push('/readme');
+                        self.$router.push('/boss');
                     } else {
                         console.log('error submit!!');
                         return false;
@@ -55,6 +55,7 @@
 
 <style scoped>
     .login-wrap{
+        position: relative;
         width:100%;
         height:100%;
     }
@@ -65,7 +66,7 @@
         margin-top: -230px;
         text-align: center;
         font-size:30px;
-        color: #000;
+        color: #fff;
 
     }
     .ms-login{
