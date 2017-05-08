@@ -13,16 +13,23 @@
 <script>
 	import vHead from './Header.vue';
 	import vSidebar from './Sidebar.vue';
+	import axios from 'axios';
 	export default {
 		components:{
 			vHead, vSidebar
+		},
+		created () {
+			this.checkLogin();
 		},
 		watch : {
 			'$route': 'checkLogin'
 		},
 		methods : {
 			checkLogin(){
-				alert(22)
+				axios.get('http://blog.com/boss/user/loginvalid').then(res => {
+					console.log(res)
+				});
+				console.log('初始化。验证是否登录');
 			}
 		}
 	}
