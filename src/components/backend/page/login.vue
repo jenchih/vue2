@@ -19,7 +19,7 @@
 </template>
 
 <script>
-	import axios from 'axios';
+	import remote from '@/fetch/api'
 	export default {
 		data: function(){
 			return {
@@ -39,17 +39,25 @@
 		},
 		methods: {
 			submitForm(formName) {
-				// const self = this;
-				// self.$refs[formName].validate((valid) => {
-				// 	if (valid) {
-
-				// 		localStorage.setItem('ms_username',self.ruleForm.username);
-				// 		self.$router.push('/boss');
-				// 	} else {
-				// 		console.log('error submit!!');
-				// 		return false;
-				// 	}
-				// });
+				const self = this;
+				self.$refs[formName].validate((valid) => {
+					if (valid) {
+						remote.post('/boss/user/loginvalid',{username:self.ruleForm.username,password:self.ruleForm.password}).then(function(data){
+							if(data.data.code == 200 )
+							{
+								localStorage.setItem('ms_username',self.ruleForm.username);
+								self.$router.push('/boss');
+							}
+							else
+							{
+								alert(data.data.message)
+							}
+						})
+					} else {
+						console.log('error submit!!');
+						return false;
+					}
+				});
 			}
 		}
 	}

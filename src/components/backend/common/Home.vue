@@ -13,22 +13,22 @@
 <script>
 	import vHead from './Header.vue';
 	import vSidebar from './Sidebar.vue';
-	import axios from 'axios';
+	import remote from '@/fetch/api'
+
 	export default {
 		components:{
 			vHead, vSidebar
 		},
 		created () {
-			this.checkLogin();
+			this.test()
 		},
 		watch : {
-			'$route': 'checkLogin'
 		},
 		methods : {
-			checkLogin(){
-				axios.get('http://blog.com/boss/user/loginvalid').then(res => {
-					console.log(res)
-				});
+			test(){
+				remote.post('/boss/user/getSes').then(function(data){
+					console.log(data);
+				})
 				console.log('初始化。验证是否登录');
 			}
 		}

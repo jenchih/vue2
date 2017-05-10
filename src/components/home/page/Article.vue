@@ -1,25 +1,14 @@
 <template>
 	<div class="article-show">
 		<div class="article-list">
-			<div class="article">
-				<router-link to="/detail/12"><h2><div class="a-title">Hello World</div></h2></router-link>
-				<div class="a-time">2017-4-28</div>
-			</div>
-			<div class="article">
-				<h2><div class="a-title">Hello World</div></h2>
-				<div class="a-time">2017-4-28</div>
-			</div>
-			<div class="article">
-				<h2><div class="a-title">Hello World</div></h2>
-				<div class="a-time">2017-4-28</div>
-			</div>
-			<div class="article">
-				<h2><div class="a-title">Hello World</div></h2>
-				<div class="a-time">2017-4-28</div>
+			<div v-for="value in data" class="article">
+				<router-link :to="'/detail/'+value.aid" ><h2><div class="a-title">{{value.title}}</div></h2></router-link>
+				<div class="a-time">{{value.time}}</div>
 			</div>
 		</div>
 		<div class="block">
 			<el-pagination id="pagination"
+			@current-change="handleCurrentChange"
 			layout="prev, pager, next"
 			:total="1000">
 			</el-pagination>
@@ -31,15 +20,28 @@
 export default {
 	data () {
 		return {
-			loading : false
+			data :  [
+				{ 'aid':1,'title':'leslie','time':'2017-5-10 17:57:21' },
+				{ 'aid':2,'title':'hello world','time':'2017-5-10 17:57:21'},
+				{ 'aid':3,'title':'jenchih','time':'2017-5-10 17:57:21'  },
+				{ 'aid':4,'title':'rzliao' ,'time':'2017-5-10 17:57:21' },
+			]
 		}
 	},
 	created () {
-		// var client = new hprose.HttpClient('192.168.130.129', ['hello', 'sum']);
-		// console.log(client)
-		// client.hello(function(){
-		// 	alert(1)
-		// })
+		this.getList(0)  //第一页
+	},
+	methods :{
+		handleCurrentChange(p){
+			console.log(p)//分页数
+		},
+		getList(p){
+			// var client = new hprose.HttpClient('192.168.130.129', ['hello', 'sum']);
+			// console.log(client)
+			// client.hello(function(){
+			// 	alert(1)
+			// })
+		}
 	}
 }
 </script>
