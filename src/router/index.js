@@ -25,7 +25,7 @@ export default new Router({
 					component: Article
 				},
 				{
-					path: '/article',
+					path: '/article/:type',
 					component: Article
 				},
 				{

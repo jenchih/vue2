@@ -1,5 +1,5 @@
 <template>
-	<div class="detail">
+	<div class="detail" v-loading.fullscreen.lock="fullscreenLoading">
 		{{msg}}
 	</div>
 </template>
@@ -9,19 +9,23 @@
 		name : 'Detail',
 		data () {
 			return {
-				msg : 'this is Detail app'
+				msg : 'this is Detail app',
+				fullscreenLoading : false
 			}
 		},
 		created () {
-			this.alertMsg();
+			this.getArticlDeatil();
 		},
 		methods : {
-			alertMsg(){
-				this.msg = '具体详细数据';
+			getArticlDeatil(){
+				let aid = this.$route.params.id;
+				this.msg = '具体详细数据 : ----'+ aid;
 			}
 		}
 	}
 </script>
 <style scoped>
-
+.detail{
+	background: #fff;
+}
 </style>

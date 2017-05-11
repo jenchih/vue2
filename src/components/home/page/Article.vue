@@ -1,7 +1,7 @@
 <template>
-	<div class="article-show">
+	<div class="article-show"  v-loading.fullscreen.lock="fullscreenLoading" >
 		<div class="article-list">
-			<div v-for="value in data" class="article">
+			<div v-for="value in dataList" class="article">
 				<router-link :to="'/detail/'+value.aid" ><h2><div class="a-title">{{value.title}}</div></h2></router-link>
 				<div class="a-time">{{value.time}}</div>
 			</div>
@@ -20,22 +20,29 @@
 export default {
 	data () {
 		return {
-			data :  [
+			dataList :  [
 				{ 'aid':1,'title':'leslie','time':'2017-5-10 17:57:21' },
 				{ 'aid':2,'title':'hello world','time':'2017-5-10 17:57:21'},
 				{ 'aid':3,'title':'jenchih','time':'2017-5-10 17:57:21'  },
 				{ 'aid':4,'title':'rzliao' ,'time':'2017-5-10 17:57:21' },
-			]
+			],
+			 fullscreenLoading: false
 		}
 	},
 	created () {
-		this.getList(0)  //第一页
+		this.getList(1)  //第一页
+	},
+	watch :{
+		'$route':'getList'
 	},
 	methods :{
 		handleCurrentChange(p){
-			console.log(p)//分页数
+			this.getList(p)
 		},
 		getList(p){
+			let type = this.$route.params.type  //获取文章的类型
+			console.log(type);
+			console.log(p);
 			// var client = new hprose.HttpClient('192.168.130.129', ['hello', 'sum']);
 			// console.log(client)
 			// client.hello(function(){
