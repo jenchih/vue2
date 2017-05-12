@@ -20,17 +20,10 @@
 			vHead, vSidebar
 		},
 		created () {
-			this.test()
 		},
 		watch : {
 		},
 		methods : {
-			test(){
-				remote.post('/boss/user/getSes').then(function(data){
-					console.log(data);
-				})
-				console.log('初始化。验证是否登录');
-			}
 		}
 	}
 </script>

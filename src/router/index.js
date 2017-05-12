@@ -6,7 +6,6 @@ import Leslie from '@/components/home/page/Leslie'
 import Article from '@/components/home/page/Article'
 import Detail from '@/components/home/page/Detail'
 
-
 import BHome from '@/components/backend/common/Home'
 import Login from '@/components/backend/page/Login'
 import Readme from '@/components/backend/page/Readme'
@@ -52,7 +51,6 @@ export default new Router({
 				}
 			]
 		},
-		,
 		{
 			path: '/login',
 			component: Login,

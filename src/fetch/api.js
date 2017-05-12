@@ -9,9 +9,6 @@ export default axios.create({
 		if(data.code == 404) Router.push({path:'/login'});
 		return data;
 	}],
-	proxy: {
-		host: 'http://blog.com',
-	},
 	responseType: 'json', // default 
 	headers: {'X-Requested-With': 'XMLHttpRequest'}
 })
