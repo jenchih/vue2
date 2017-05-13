@@ -6,6 +6,7 @@ export default axios.create({
 		if( Object.keys(data).indexOf('code') == -1 ) {
 			return data;
 		}
+		if(data.code == 110) Router.push({path:'/login'});
 		if(data.code == 404) Router.push({path:'/login'});
 		return data;
 	}],

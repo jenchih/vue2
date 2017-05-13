@@ -10,6 +10,8 @@ import BHome from '@/components/backend/common/Home'
 import Login from '@/components/backend/page/Login'
 import Readme from '@/components/backend/page/Readme'
 import Markdown from '@/components/backend/page/Markdown'
+import Upload from '@/components/backend/page/Upload'
+import VueEditor from '@/components/backend/page/VueEditor'
 
 Vue.use(Router)
 export default new Router({
@@ -48,6 +50,18 @@ export default new Router({
 				{
 					path:'markdown',
 					component: Markdown
+				},
+				{
+					path:'upload',
+					component: Upload
+				},
+				{
+					path:'articletype',
+					component: ArticleType
+				},
+				{
+					path:'vueEditor',
+					component: VueEditor
 				}
 			]
 		},

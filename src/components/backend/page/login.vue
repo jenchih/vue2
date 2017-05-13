@@ -42,7 +42,10 @@
 				const self = this;
 				self.$refs[formName].validate((valid) => {
 					if (valid) {
-						remote.post('/boss/user/loginvalid',{username:self.ruleForm.username,password:self.ruleForm.password}).then(function(data){
+						// this.$message.success('错了哦，这是一条错误消息');
+						remote.post('/boss/user/loginvalid',{username:self.ruleForm.username,password:self.ruleForm.password}).
+						then(
+							data => {
 							if(data.data.code == 200 )
 							{
 								localStorage.setItem('ms_username',self.ruleForm.username);
@@ -50,9 +53,10 @@
 							}
 							else
 							{
-								alert(data.data.message)
+								this.$message.error(data.data.message)
 							}
-						})
+						}
+						)
 					} else {
 						console.log('error submit!!');
 						return false;
