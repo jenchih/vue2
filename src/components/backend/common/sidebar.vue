@@ -9,7 +9,8 @@
 			</el-menu-item>
 			<el-submenu index="3">
 				<template slot="title"><i class="el-icon-date"></i>文章</template>
-				<el-menu-item index="/boss/markdown">文章列表</el-menu-item>
+				<el-menu-item index="/boss/articlelist">文章列表</el-menu-item>
+				<el-menu-item index="/boss/setArticle/0">添加文章</el-menu-item>
 			</el-submenu>
 		</el-menu>
 	</div>

@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home/common/Home'
-import Jenchih from '@/components/home/page/Jenchih'
-import Leslie from '@/components/home/page/Leslie'
 import Article from '@/components/home/page/Article'
 import Detail from '@/components/home/page/Detail'
 
+//后台
 import BHome from '@/components/backend/common/Home'
 import Login from '@/components/backend/page/Login'
 import Readme from '@/components/backend/page/Readme'
-import Markdown from '@/components/backend/page/Markdown'
+import setArticle from '@/components/backend/page/setArticle'
 import Upload from '@/components/backend/page/Upload'
-import VueEditor from '@/components/backend/page/VueEditor'
+import ArticleType from '@/components/backend/page/ArticleType'
+import ArticleList from '@/components/backend/page/ArticleList'
 
 Vue.use(Router)
 export default new Router({
@@ -48,8 +48,8 @@ export default new Router({
 					component: Readme
 				},
 				{
-					path:'markdown',
-					component: Markdown
+					path:'setArticle/:id',
+					component: setArticle
 				},
 				{
 					path:'upload',
@@ -60,8 +60,8 @@ export default new Router({
 					component: ArticleType
 				},
 				{
-					path:'vueEditor',
-					component: VueEditor
+					path:'articlelist',
+					component: ArticleList
 				}
 			]
 		},
