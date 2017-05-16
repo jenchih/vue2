@@ -21,6 +21,9 @@
 					</el-option>
 				</el-select>
 			</el-form-item>
+			<el-form-item>
+				<el-switch on-text="开" off-text="关" v-model="articleFrom.status"></el-switch>
+			</el-form-item>
 			<el-form-item prop="content">
 				<markdown-editor v-model="articleFrom.content" :configs="configs" ref="markdownEditor"></markdown-editor>
 			</el-form-item>
@@ -33,7 +36,6 @@
 <script>
 	import { markdownEditor } from 'vue-simplemde';
 	import remote from '@/fetch/api';
-
 	export default {
 		data (){
 			return {
@@ -42,7 +44,8 @@
 				articleFrom:{
 					id      : 0,
 					title   : '',
-					typeid  : 0
+					typeid  : 0,
+					status  : 0
 				},
 				rules:{
 					title: [
@@ -82,13 +85,14 @@
 							'content' : this.articleFrom.content,
 							'title'   : this.articleFrom.title,
 							'id'      : this.articleFrom.id,
-							'typeid'  : this.articleFrom.typeid
+							'typeid'  : this.articleFrom.typeid,
+							'status'  : this.articleFrom.status
 						};
 						remote.post('/boss/index/setArticle',sentData).then(data => {
 							this.$message.success(data.data.message)
 							if( data.data.code == 200 )
 							{
-								this.$route.push('/articleList')
+								this.$router.push('/boss/articlelist')
 							}
 						})
 					}
@@ -102,15 +106,22 @@
 			{
 				remote.post('/boss/index/getTypeList').then(data => {
 					this.typelist = data.data.data
+				}).catch(error => {
+					this.$message.error('系统出错了,请重试·······');
 				})
 			},
 			getArticleByid()
 			{
 				let id = this.$route.params.id;
-				if( id == 0 ) return; 
+				if( id == 0 || isNaN(id) ) return; 
+				this.articleFrom.id = id;
 				remote.post('/boss/index/getArticleByid',{'id':id}).then(data=>{
-					// this.articleFrom.typeid = this.typelist[0].id
-					console.log(data)
+					this.articleFrom.content = data.data.data.content
+					this.articleFrom.typeid = data.data.data.type_id   //设置默认选项
+					this.articleFrom.title = data.data.data.title
+					// this.articleFrom.typeid = this.typelist[0].id   //设置默认选项
+				}).catch(error => {
+					this.$message.error('系统出错了,请重试·······');
 				})
 			}
 		}

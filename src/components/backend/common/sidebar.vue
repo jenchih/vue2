@@ -2,7 +2,7 @@
 	<div class="sidebar">
 		<el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
 			<el-menu-item index="/boss/readme">
-				<i class="el-icon-setting"></i>自述
+				<i class="el-icon-setting"></i>HOME
 			</el-menu-item>
 			<el-menu-item index="/boss/articletype">
 				<i class="el-icon-setting"></i>文章类型

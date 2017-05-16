@@ -6,9 +6,8 @@
             </el-breadcrumb>
         </div>
         <div class="ms-doc">
-            <h3>首页显示东西 XXXXXXXXXXXXXXXXX</h3>
             <article>
-                
+                <h1> hello world</h1>
             </article>
         </div>
 
