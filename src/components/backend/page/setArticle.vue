@@ -106,8 +106,6 @@
 			{
 				remote.post('/boss/index/getTypeList').then(data => {
 					this.typelist = data.data.data
-				}).catch(error => {
-					this.$message.error('系统出错了,请重试·······');
 				})
 			},
 			getArticleByid()
@@ -120,8 +118,6 @@
 					this.articleFrom.typeid = data.data.data.type_id   //设置默认选项
 					this.articleFrom.title = data.data.data.title
 					// this.articleFrom.typeid = this.typelist[0].id   //设置默认选项
-				}).catch(error => {
-					this.$message.error('系统出错了,请重试·······');
 				})
 			}
 		}

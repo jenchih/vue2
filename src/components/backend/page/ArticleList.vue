@@ -99,8 +99,6 @@ import remote from '@/fetch/api'
 				remote.post('/boss/index/getArticleList',{p:p,aid:this.aid}).then(data=>{
 					this.tableData = data.data.data.list
 					this.total = data.data.data.total
-				}).catch(error => {
-					this.$message.error('系统出错了,请重试·······');
 				})
 			},
 			handleEdit(item) {
@@ -110,8 +108,6 @@ import remote from '@/fetch/api'
 				let status = item.status == 1 ? 0 : 1;
 				remote.post('/boss/index/articleDel',{id:item.id,status:status}).then(data=>{
 					this.$message.success(data.data.message);
-				}).catch(error => {
-					this.$message.error('系统出错了,请重试·······');
 				})
 			},
 			handleCurrentChange( page ){

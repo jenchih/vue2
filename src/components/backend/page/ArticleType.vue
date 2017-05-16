@@ -119,8 +119,6 @@ import remote from '@/fetch/api'
 							this.$message.error(data.data.message)
 						}
 						this.dialogFormVisible = false;
-					}).catch(error => {
-						this.$message.error('系统出错了,请重试·······');
 					})
 				}
 				else 
@@ -151,8 +149,6 @@ import remote from '@/fetch/api'
 					{
 						this.$message.error(data.data.message)
 					}
-				}).catch(error => {
-					this.$message.error('系统出错了,请重试·······');
 				})
 			}
 		}
