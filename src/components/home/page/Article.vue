@@ -1,53 +1,79 @@
 <template>
-	<div class="article-show"  v-loading.fullscreen.lock="fullscreenLoading" >
+	<div class="article-show" v-loading.body.lock="fullscreenLoading" v-if="total > 0">
 		<div class="article-list">
-			<div v-for="value in dataList" class="article">
+			<div  v-for="value in dataList" class="article">
 				<router-link :to="'/detail/'+value.aid" ><h2><div class="a-title">{{value.title}}</div></h2></router-link>
-				<div class="a-time">{{value.time}}</div>
+				<div class="a-time">{{value.ctime}}</div>
 			</div>
+			
 		</div>
 		<div class="block">
 			<el-pagination id="pagination"
 			@current-change="handleCurrentChange"
 			layout="prev, pager, next"
-			:total="1000">
+			:total="total">
 			</el-pagination>
+		</div>
+	</div>
+	<div v-else>
+		<div class="article-list">
+			<div class="article">
+				<p>暂无数据</p>
+			</div>
 		</div>
 	</div>
 </template>
 <script>
-// import hprose from 'hprose-html5'
+import hprose from 'hprose-html5'
 export default {
 	data () {
 		return {
-			dataList :  [
-				{ 'aid':1,'title':'leslie','time':'2017-5-10 17:57:21' },
-				{ 'aid':2,'title':'hello world','time':'2017-5-10 17:57:21'},
-				{ 'aid':3,'title':'jenchih','time':'2017-5-10 17:57:21'  },
-				{ 'aid':4,'title':'rzliao' ,'time':'2017-5-10 17:57:21' },
-			],
-			 fullscreenLoading: false
+			dataList :  [],
+			total : 100,
+			fullscreenLoading: false,
+			uri : 'http://192.168.130.129:1314',
+			functions : {
+				user: ['getLatelyTimeData','getTpyeData'],
+			}
 		}
 	},
 	created () {
 		this.getList(1)  //第一页
 	},
 	watch :{
-		'$route':'getList'
+		$route(){
+			this.getList(1)
+		}
 	},
 	methods :{
 		handleCurrentChange(p){
 			this.getList(p)
 		},
 		getList(p){
-			let type = this.$route.params.type  //获取文章的类型
-			console.log(type);
-			console.log(p);
-			// var client = new hprose.HttpClient('192.168.130.129', ['hello', 'sum']);
-			// console.log(client)
-			// client.hello(function(){
-			// 	alert(1)
-			// })
+			let self = this;
+			let type = self.$route.params.type  //获取文章的类型
+			var client = new hprose.HttpClient(self.uri, self.functions);
+			function *getData(){
+				try	{
+					self.fullscreenLoading = true;
+					var data;
+					if( type == undefined )
+					{
+						data = yield client.user.getLatelyTimeData(p);
+					}
+					else
+					{
+						data = yield client.user.getTpyeData(type,p);
+					}
+					self.dataList = data.data
+					self.total    = data.total
+					self.fullscreenLoading = false;
+				}
+				catch(e){
+					self.$message.error('服务器出错啦·······请稍后重试')
+				}
+			}
+			hprose.co(getData());
 		}
 	}
 }

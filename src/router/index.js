@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home/common/Home'
+import NotFound from '@/components/home/common/NotFound'
 import Article from '@/components/home/page/Article'
 import Detail from '@/components/home/page/Detail'
 
@@ -68,9 +69,13 @@ export default new Router({
 		{
 			path: '/login',
 			component: Login,
+		},                            
+		{
+			path: '/404',
+			component: NotFound,
 		},
 		{
 			path: '*', redirect: '/'  //所有未定义路由重定向
-		}
+		},
 	]
 })

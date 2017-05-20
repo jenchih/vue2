@@ -3,39 +3,54 @@
 		<div class="logo">
 			<img src="../../../assets/leslie.jpg">
 			<br>
-			<div>Jenchih Leslie`s Blog</div>
+			<div>{{title}}</div>
 		</div>
 		<el-menu theme="dark"  class="el-menu-demo" mode="horizontal" router unique-opened>
-			<el-menu-item index="/article/all">首页</el-menu-item>
-			<div v-for="item in titles">
-				<el-menu-item :index="'/article/' + item.type">{{item.name}}</a></el-menu-item>
+			<el-menu-item index="/">首页</el-menu-item>
+			<div v-for="item in navs">
+				<el-menu-item :index="'/article/' + item.id">{{item.name}}</a></el-menu-item>
 			</div>
-			<el-submenu index="2">
+		<!-- 	<el-submenu index="2">
 				<template slot="title">我的工作台</template>
 				<el-menu-item index="2-1">选项1</el-menu-item>
 				<el-menu-item index="2-2">选项2</el-menu-item>
 				<el-menu-item index="2-3">选项3</el-menu-item>
-			</el-submenu>
+			</el-submenu> -->
 		</el-menu>
 	</div>
 </template>
 <script>
+import hprose from 'hprose-html5'
 export default{
 	data (){
 		return {
-			titles : [
-				{'name':'PHP','type':'php'},
-				{'name':'linux','type':'linux'},
-				{'name':'生活','type':'life'},
-				{'name':'javascript','type':'javascript'}
-			]
+			navs : [],
+			title: 'Jenchih Leslie`s Blog',
+			uri : 'http://192.168.130.129:1314',
+			functions : {
+				user: ['getTpyeData','getTypeList','config'],
+			}
 		}
 	},
 	created (){
-
+		this.init();
 	},
 	methods : {
-
+		init(){
+			let self = this;
+			var client = new hprose.HttpClient(self.uri, self.functions);
+			function *getData(){
+				try	{
+					self.navs  = yield client.user.getTypeList();
+					let tt = yield client.user.config('title');
+					if( tt != null ) self.title = tt.value
+				}
+				catch(e){
+					self.$message.error('服务器出错啦·······请稍后重试')
+				}
+			}
+			hprose.co(getData());
+		}
 	}
 }
 </script>
