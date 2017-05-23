@@ -21,8 +21,6 @@
 		},
 		created () {
 		},
-		watch : {
-		},
 		methods : {
 		}
 	}

@@ -55,14 +55,18 @@ import remote from '@/fetch/api';
 		},
 		computed:{
 			username(){
-				let username = localStorage.getItem('ms_username');
-				return username ? username : this.name;
+				let username = sessionStorage.getItem('ms_username');
+				if( !username )
+				{
+					this.$router.push('/login');
+				}
+				return username;
 			}
 		},
 		methods:{
 			handleCommand(command) {
 				if(command == 'loginout'){
-					localStorage.removeItem('ms_username')
+					sessionStorage.removeItem('ms_username')
 					this.$router.push('/login');
 				}
 				if( command == 'eidtpassword' ){

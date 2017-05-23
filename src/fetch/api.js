@@ -2,7 +2,7 @@ import axiosModule from 'axios';
 import Router from '../router/index'
 import self from '../main.js'
 let axios = axiosModule.create({
-	baseURL : 'https://jenchih.cc',
+	baseURL : 'http://blog.com',
 	responseType: 'json', // default 
 	headers: {'X-Requested-With': 'XMLHttpRequest'}
 })
