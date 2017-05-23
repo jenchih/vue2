@@ -37,7 +37,7 @@ export default new Router({
 			]
 		},
 		{
-			path: '/boss',
+			path: '/admin',
 			component: BHome,
 			children:[
 				{
@@ -69,7 +69,7 @@ export default new Router({
 		{
 			path: '/login',
 			component: Login,
-		},                            
+		},
 		{
 			path: '/404',
 			component: NotFound,

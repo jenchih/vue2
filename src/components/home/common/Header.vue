@@ -1,7 +1,7 @@
 <template>
 	<div class="home-header">
 		<div class="logo">
-			<img src="../../../assets/leslie.jpg">
+			<img src="/assets/leslie.jpg">
 			<br>
 			<div>{{title}}</div>
 		</div>
