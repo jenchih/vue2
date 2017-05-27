@@ -25,7 +25,7 @@
 				<el-switch on-text="开" off-text="关" v-model="articleFrom.status"></el-switch>
 			</el-form-item>
 			<el-form-item prop="content">
-				<markdown-editor v-model="articleFrom.content" :configs="configs" ref="markdownEditor"></markdown-editor>
+				<mavon-editor  v-model="articleFrom.content" />
 			</el-form-item>
 			<el-button @click="sublimt('articleFrom')" type="primary">确认提交</el-button>
 		</el-form>
@@ -34,7 +34,6 @@
 </template>
 
 <script>
-	import { markdownEditor } from 'vue-simplemde';
 	import remote from '@/fetch/api';
 	export default {
 		data (){
@@ -58,18 +57,10 @@
 						{ required: true, message: '内容不能为空', trigger: 'blur' }
 					]
 				},
-				typelist : [{'id':0,'name':'请选择'}],
-				configs : {
-					status: true,
-					renderingConfig: {
-						codeSyntaxHighlighting: true,
-						highlightingTheme: 'atom-one-light'
-					}
-				}
+				typelist : [{'id':0,'name':'请选择'}]
 			}
 		},
 		components:{
-			markdownEditor
 		},
 		created(){
 			if( this.$route.params.id != 0  ) this.pageTitle = '修改文章'

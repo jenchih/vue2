@@ -75,7 +75,7 @@ export default new Router({
 			component: NotFound,
 		},
 		{
-			path: '*', redirect: '/'  //所有未定义路由重定向
+			path: '*', redirect: '/404'  //所有未定义路由重定向
 		},
 	]
 })

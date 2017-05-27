@@ -45,16 +45,16 @@
 						remote.post('/boss/user/loginvalid',{username:self.ruleForm.username,password:self.ruleForm.password}).
 						then(
 							data => {
-							if(data.data.code == 200 )
-							{
-								sessionStorage.setItem('ms_username',self.ruleForm.username);
-								self.$router.push('/admin');
+								if(data.data.code == 200 )
+								{
+									sessionStorage.setItem('ms_username',self.ruleForm.username);
+									self.$router.push('/admin');
+								}
+								else
+								{
+									this.$message.error(data.data.message)
+								}
 							}
-							else
-							{
-								this.$message.error(data.data.message)
-							}
-						}
 						)
 					} else {
 						console.log('error submit!!');

@@ -10,26 +10,17 @@
 			<div v-for="item in navs">
 				<el-menu-item :index="'/article/' + item.id">{{item.name}}</a></el-menu-item>
 			</div>
-		<!-- 	<el-submenu index="2">
-				<template slot="title">我的工作台</template>
-				<el-menu-item index="2-1">选项1</el-menu-item>
-				<el-menu-item index="2-2">选项2</el-menu-item>
-				<el-menu-item index="2-3">选项3</el-menu-item>
-			</el-submenu> -->
 		</el-menu>
 	</div>
 </template>
 <script>
 import hprose from 'hprose-html5'
+import client from '@/fetch/hprose';
 export default{
 	data (){
 		return {
 			navs : [],
-			title: 'Jenchih Leslie`s Blog',
-			uri : 'http://192.168.130.129:1314',
-			functions : {
-				user: ['getTpyeData','getTypeList','config'],
-			}
+			title: 'Jenchih Leslie`s Blog'
 		}
 	},
 	created (){
@@ -38,7 +29,6 @@ export default{
 	methods : {
 		init(){
 			let self = this;
-			var client = new hprose.HttpClient(self.uri, self.functions);
 			function *getData(){
 				try	{
 					self.navs  = yield client.user.getTypeList();

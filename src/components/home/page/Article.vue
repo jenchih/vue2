@@ -25,16 +25,13 @@
 </template>
 <script>
 import hprose from 'hprose-html5'
+import client from '@/fetch/hprose';
 export default {
 	data () {
 		return {
 			dataList :  [],
 			total : 100,
-			fullscreenLoading: false,
-			uri : 'http://192.168.130.129:1314',
-			functions : {
-				user: ['getLatelyTimeData','getTpyeData'],
-			}
+			fullscreenLoading: false
 		}
 	},
 	created () {
@@ -52,7 +49,6 @@ export default {
 		getList(p){
 			let self = this;
 			let type = self.$route.params.type  //获取文章的类型
-			var client = new hprose.HttpClient(self.uri, self.functions);
 			function *getData(){
 				try	{
 					self.fullscreenLoading = true;

@@ -1,16 +1,16 @@
 <template>
 	<div class="sidebar">
 		<el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
-			<el-menu-item index="/boss/readme">
+			<el-menu-item index="/admin/readme">
 				<i class="el-icon-setting"></i>HOME
 			</el-menu-item>
-			<el-menu-item index="/boss/articletype">
+			<el-menu-item index="/admin/articletype">
 				<i class="el-icon-setting"></i>文章类型
 			</el-menu-item>
 			<el-submenu index="3">
 				<template slot="title"><i class="el-icon-date"></i>文章</template>
-				<el-menu-item index="/boss/articlelist">文章列表</el-menu-item>
-				<el-menu-item index="/boss/setArticle/0">添加文章</el-menu-item>
+				<el-menu-item index="/admin/articlelist">文章列表</el-menu-item>
+				<el-menu-item index="/admin/setArticle/0">添加文章</el-menu-item>
 			</el-submenu>
 		</el-menu>
 	</div>
