@@ -1,6 +1,7 @@
 <template>
 	<div class="detail" v-loading.fullscreen.lock="fullscreenLoading">
-		<mavon-editor  v-model="value"  :subfield="isShow" :toolbarsFlag="isShow" :editable="false"/>
+		<!-- <mavon-editor  v-model="value"  :subfield="isShow" :toolbarsFlag="isShow" :editable="false"/> -->
+		{{value}}
 		<!-- :value="msg" -->
 	</div>
 </template>

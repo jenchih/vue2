@@ -34,6 +34,8 @@
 </template>
 
 <script>
+ var mavonEditor = require('mavon-editor')
+    import 'mavon-editor/dist/css/index.css'
 	import remote from '@/fetch/api';
 	export default {
 		data (){
@@ -61,6 +63,7 @@
 			}
 		},
 		components:{
+			'mavon-editor': mavonEditor.mavonEditor
 		},
 		created(){
 			if( this.$route.params.id != 0  ) this.pageTitle = '修改文章'
