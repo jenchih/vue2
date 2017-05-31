@@ -1,18 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/home/common/Home'
-import NotFound from '@/components/home/common/NotFound'
-import Article from '@/components/home/page/Article'
-import Detail from '@/components/home/page/Detail'
+
+const Home     =  resolve => require(['@/components/home/common/Home'], resolve)
+const NotFound =  resolve => require(['@/components/home/common/NotFound'], resolve)
+const Article  =  resolve => require(['@/components/home/page/Article'], resolve)
+const Detail   =  resolve => require(['@/components/home/page/Detail'], resolve)
 
 //后台
-import BHome from '@/components/backend/common/Home'
-import Login from '@/components/backend/page/Login'
-import Readme from '@/components/backend/page/Readme'
-import setArticle from '@/components/backend/page/setArticle'
-import Upload from '@/components/backend/page/Upload'
-import ArticleType from '@/components/backend/page/ArticleType'
-import ArticleList from '@/components/backend/page/ArticleList'
+const BHome       =  resolve => require(['@/components/backend/common/Home'], resolve)
+const Login       =  resolve => require(['@/components/backend/page/Login'], resolve)
+const Readme      =  resolve => require(['@/components/backend/page/Readme'], resolve)
+const setArticle  =  resolve => require(['@/components/backend/page/setArticle'], resolve)
+const Upload      =  resolve => require(['@/components/backend/page/Upload'], resolve)
+const ArticleType =  resolve => require(['@/components/backend/page/ArticleType'], resolve)
+const ArticleList =  resolve => require(['@/components/backend/page/ArticleList'], resolve)
+
 
 Vue.use(Router)
 export default new Router({
