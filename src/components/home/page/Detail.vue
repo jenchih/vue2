@@ -1,7 +1,7 @@
 <template>
 	<div class="detail" v-loading.fullscreen.lock="fullscreenLoading">
-		<!-- <mavon-editor  v-model="value"  :subfield="isShow" :toolbarsFlag="isShow" :editable="false"/> -->
-		{{value}}
+		<mavon-editor  v-model="value"  :subfield="isShow" :toolbarsFlag="isShow" :editable="false"/>
+		<!-- {{value}} -->
 		<!-- :value="msg" -->
 	</div>
 </template>
@@ -9,6 +9,8 @@
 <script>
 import hprose from 'hprose-html5'
 import client from '@/fetch/hprose';
+ var mavonEditor = require('mavon-editor')
+    import 'mavon-editor/dist/css/index.css'
 	export default {
 		name : 'Detail',
 		data () {
@@ -22,6 +24,7 @@ import client from '@/fetch/hprose';
 			this.getArticlDeatil();
 		},
 		components:{
+			'mavon-editor': mavonEditor.mavonEditor
 		},
 		methods : {
 			getArticlDeatil(){
