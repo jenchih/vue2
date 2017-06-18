@@ -16,7 +16,9 @@
 		</div>
 	</div>
 </template>
-
+<style scoped>
+    @import "../../../../static/css/color-dark.css";
+</style>
 <script>
 	import remote from '@/fetch/api'
 	export default {

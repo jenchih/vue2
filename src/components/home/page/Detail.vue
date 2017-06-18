@@ -1,16 +1,12 @@
 <template>
-	<div class="detail" v-loading.fullscreen.lock="fullscreenLoading">
-		<mavon-editor  v-model="value"  :subfield="isShow" :toolbarsFlag="isShow" :editable="false"/>
-		<!-- {{value}} -->
-		<!-- :value="msg" -->
+	<div class="detail  markdown-body" v-loading.fullscreen.lock="fullscreenLoading" v-html="value">
 	</div>
 </template>
 
 <script>
 import hprose from 'hprose-html5'
 import client from '@/fetch/hprose';
- var mavonEditor = require('mavon-editor')
-    import 'mavon-editor/dist/css/index.css'
+import 'mavon-editor/dist/css/index.css'
 	export default {
 		name : 'Detail',
 		data () {
@@ -22,9 +18,6 @@ import client from '@/fetch/hprose';
 		},
 		created () {
 			this.getArticlDeatil();
-		},
-		components:{
-			'mavon-editor': mavonEditor.mavonEditor
 		},
 		methods : {
 			getArticlDeatil(){
@@ -40,7 +33,7 @@ import client from '@/fetch/hprose';
 						}
 						else
 						{
-							self.value = data.content
+							self.value = data.html
 						}
 						self.fullscreenLoading = false;
 					}
@@ -57,5 +50,7 @@ import client from '@/fetch/hprose';
 .detail{
 	background: #fff;
 	margin: auto;
+	padding: 30px;
+	box-sizing: border-box；
 }
 </style>

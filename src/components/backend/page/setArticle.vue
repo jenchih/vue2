@@ -25,7 +25,7 @@
 				<el-switch on-text="开" off-text="关" v-model="articleFrom.status"></el-switch>
 			</el-form-item>
 			<el-form-item prop="content">
-				<mavon-editor  v-model="articleFrom.content" />
+				<mavon-editor  v-model="articleFrom.content" @change="setHtmlCode" />
 			</el-form-item>
 			<el-button @click="sublimt('articleFrom')" type="primary">确认提交</el-button>
 		</el-form>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
- var mavonEditor = require('mavon-editor')
+	var mavonEditor = require('mavon-editor')
     import 'mavon-editor/dist/css/index.css'
 	import remote from '@/fetch/api';
 	export default {
@@ -42,6 +42,7 @@
 			return {
 				pageTitle :'添加文章',
 				content : '',
+				htmlCode : '',
 				articleFrom:{
 					id      : 0,
 					title   : '',
@@ -76,6 +77,7 @@
 					if( valid )
 					{
 						let sentData = {
+							'html'    : this.htmlCode,
 							'content' : this.articleFrom.content,
 							'title'   : this.articleFrom.title,
 							'id'      : this.articleFrom.id,
@@ -86,7 +88,7 @@
 							this.$message.success(data.data.message)
 							if( data.data.code == 200 )
 							{
-								this.$router.push('/boss/articlelist')
+								this.$router.push('/admin/articlelist')
 							}
 						})
 					}
@@ -113,6 +115,10 @@
 					this.articleFrom.title = data.data.data.title
 					// this.articleFrom.typeid = this.typelist[0].id   //设置默认选项
 				})
+			},
+			setHtmlCode( value, html )
+			{
+				this.htmlCode = html;
 			}
 		}
 	}
