@@ -47,7 +47,7 @@
 		</el-table-column>
 	  </el-table>
 		<template>
-			<el-dialog title="收货地址" v-model="dialogFormVisible">
+			<el-dialog title="文章类型" v-model="dialogFormVisible">
 			  <el-form ref="form" :model="form"  :rules="rules">
 				<el-form-item label="文章类型名称" :label-width="formLabelWidth"  prop="name">
 					<el-input v-model="form.name" auto-complete="off"></el-input>
@@ -67,11 +67,16 @@
 </template>
 
 <script>
-import remote from '@/fetch/api'
 	export default {
 		data(){
 			return {
-				tableData: [],
+				tableData : [
+					{ id: '1', name:'PHP' ,desc:1,time:'2017-6-19 01:44:31'},
+					{ id: '2', name:'javascript' ,desc:2,time:'2017-6-19 01:44:31'},
+					{ id: '3', name:'linux' ,desc:4,time:'2017-6-19 01:44:31'},
+					{ id: '4', name:'css',desc:3,time:'2017-6-19 01:44:31' },
+					{ id: '5', name:'html' ,desc:4,time:'2017-6-19 01:44:31'}
+				],
 				dialogFormVisible: false,
 				form: {
 				  name: '',
@@ -95,6 +100,7 @@ import remote from '@/fetch/api'
 		},
 		methods : {
 			getData(){
+				return;
 				remote.post('/boss/index/getTypeList').then(data => {
 					this.tableData = data.data.data
 				})
@@ -103,6 +109,9 @@ import remote from '@/fetch/api'
 				this.$refs[formName].validate((valid) => {
 				if (valid)
 				{
+					this.$message.success('success');
+					this.dialogFormVisible = false;
+					return;
 					let sendParams = {
 						name : this.form.name,
 						sort : this.form.desc,

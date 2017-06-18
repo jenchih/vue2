@@ -44,6 +44,9 @@
 				self.$refs[formName].validate((valid) => {
 					if (valid) {
 						// this.$message.success('错了哦，这是一条错误消息');
+						self.$router.push('/admin');
+						sessionStorage.setItem('ms_username',self.ruleForm.username);
+						return;
 						remote.post('/boss/user/loginvalid',{username:self.ruleForm.username,password:self.ruleForm.password}).
 						then(
 							data => {

@@ -4,8 +4,6 @@
 </template>
 
 <script>
-import hprose from 'hprose-html5'
-import client from '@/fetch/hprose';
 import 'mavon-editor/dist/css/index.css'
 	export default {
 		name : 'Detail',
@@ -21,27 +19,7 @@ import 'mavon-editor/dist/css/index.css'
 		},
 		methods : {
 			getArticlDeatil(){
-				var self    = this;
-				let aid = self.$route.params.id;
-				function *getData(){
-					try	{
-						self.fullscreenLoading = true;
-						let data = yield client.user.getDetail(aid);
-						if( data == null )
-						{
-							self.$router.push('/404')
-						}
-						else
-						{
-							self.value = data.html
-						}
-						self.fullscreenLoading = false;
-					}
-					catch(e){
-						self.$message.error('服务器出错啦·······请稍后重试')
-					}
-				}
-				hprose.co(getData());
+				this.value = this.$route.params.id;
 			}
 		}
 	}

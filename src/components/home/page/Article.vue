@@ -2,14 +2,13 @@
 	<div class="article-show" v-loading.body.lock="fullscreenLoading" v-if="total > 0">
 		<div class="article-list">
 			<div  v-for="value in dataList" class="article">
-				<router-link :to="'/detail/'+value.aid" ><h2><div class="a-title">{{value.title}}</div></h2></router-link>
+				<router-link :to="'/detail/'+value.aid" ><h2><div class="a-title">{{text}}  {{value.title}}</div></h2></router-link>
 				<div class="a-time">{{value.ctime}}</div>
 			</div>
 			
 		</div>
 		<div class="block">
 			<el-pagination id="pagination"
-			@current-change="handleCurrentChange"
 			layout="prev, pager, next"
 			:total="total">
 			</el-pagination>
@@ -24,53 +23,33 @@
 	</div>
 </template>
 <script>
-import hprose from 'hprose-html5'
-import client from '@/fetch/hprose';
 export default {
 	data () {
 		return {
-			dataList :  [],
+			dataList :  [
+				{ aid:'aaaaaaaaaa',title:'测试1', ctime : '2017年6月18日00:57:46' },
+				{ aid:'bbbbbbbbb',title:'测试2', ctime : '2017年6月19日00:57:46' },
+				{ aid:'cccccccc',title:'测试3', ctime : '2017年6月20日00:57:46' },
+				{ aid:'dddddddddddd',title:'测试4', ctime : '2017年6月21日00:57:46' },
+				{ aid:'eeeeeeeeeeeee',title:'测试5', ctime : '2017年6月21日00:57:46' }
+			],
 			total : 100,
-			fullscreenLoading: false
+			fullscreenLoading: false,
+			map : [
+				'','PHP','javascript','linux','css','html'
+			],
+			text:''
 		}
 	},
 	created () {
-		this.getList(1)  //第一页
 	},
 	watch :{
 		$route(){
-			this.getList(1)
+			let index = this.$route.params.type;
+			this.text = this.map[index];
 		}
 	},
 	methods :{
-		handleCurrentChange(p){
-			this.getList(p)
-		},
-		getList(p){
-			let self = this;
-			let type = self.$route.params.type  //获取文章的类型
-			function *getData(){
-				try	{
-					self.fullscreenLoading = true;
-					var data;
-					if( type == undefined )
-					{
-						data = yield client.user.getLatelyTimeData(p);
-					}
-					else
-					{
-						data = yield client.user.getTpyeData(type,p);
-					}
-					self.dataList = data.data
-					self.total    = data.total
-					self.fullscreenLoading = false;
-				}
-				catch(e){
-					self.$message.error('服务器出错啦·······请稍后重试')
-				}
-			}
-			hprose.co(getData());
-		}
 	}
 }
 </script>

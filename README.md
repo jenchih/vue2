@@ -23,7 +23,7 @@ https://jenchih.cc   （国外服务器，加载略慢，勿喷）
 
 	// 开启服务器，浏览器访问 http://localhost:8080
 	npm run dev
-
+	// 若没有搭建服务器，可切换到 noserver 分支，体验效果
 ## 构建生产
 
 	// 执行构建命令，生成的dist文件夹放在服务器下即可访问

@@ -14,33 +14,22 @@
 	</div>
 </template>
 <script>
-import hprose from 'hprose-html5'
-import client from '@/fetch/hprose';
 export default{
 	data (){
 		return {
-			navs : [],
-			title: 'Jenchih Leslie`s Blog'
+			navs : [
+				{ id: '1', name:'PHP' },
+				{ id: '2', name:'javascript' },
+				{ id: '3', name:'linux' },
+				{ id: '4', name:'css' },
+				{ id: '5', name:'html' }
+			],
+			title: 'jenchih Leslie`s Blog'
 		}
 	},
 	created (){
-		this.init();
 	},
 	methods : {
-		init(){
-			let self = this;
-			function *getData(){
-				try	{
-					self.navs  = yield client.user.getTypeList();
-					let tt = yield client.user.config('title');
-					if( tt != null ) self.title = tt.value
-				}
-				catch(e){
-					self.$message.error('服务器出错啦·······请稍后重试')
-				}
-			}
-			hprose.co(getData());
-		}
 	}
 }
 </script>
