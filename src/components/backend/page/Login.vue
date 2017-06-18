@@ -45,6 +45,7 @@
 						remote.post('/boss/user/loginvalid',{username:self.ruleForm.username,password:self.ruleForm.password}).
 						then(
 							data => {
+								console.log(data)
 								if(data.data.code == 200 )
 								{
 									sessionStorage.setItem('ms_username',self.ruleForm.username);

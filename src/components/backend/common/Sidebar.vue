@@ -12,6 +12,9 @@
 				<el-menu-item index="/admin/articlelist">文章列表</el-menu-item>
 				<el-menu-item index="/admin/setArticle/0">添加文章</el-menu-item>
 			</el-submenu>
+			<el-menu-item index="/admin/articletype">
+				<i class="el-icon-menu"></i>系统配置
+			</el-menu-item>
 		</el-menu>
 	</div>
 </template>
