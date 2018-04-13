@@ -15,7 +15,7 @@ https://jenchih.cc   （国外服务器，加载略慢，勿喷）
 - coding [前端](https://coding.net/u/jenchih/p/vue/git)  [后台](https://coding.net/u/jenchih/p/blog/git)
 
 ## 安装步骤
-	git clone git@git.coding.net:jenchih/vue.git	// 把模板下载到本地
+	git clone git@git.coding.net:jenchih/vue2.git	// 把模板下载到本地
 	cd 	vue		               // 进入模板目录
 	npm install	或者 cnpm install	// 安装项目依赖，等待安装完成之后
 
